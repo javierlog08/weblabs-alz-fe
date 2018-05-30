@@ -12,14 +12,10 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 })
 export class LoginComponent {
 
-    dialogRef: MatDialogRef<LoginFormComponent>;
-
-    
-
-    constructor(public dialog: MatDialog, public breakpointObserver: BreakpointObserver) {}
+    constructor(public breakpointObserver: BreakpointObserver) {}
 
     ngOnInit() {
-        let self = this;
+        /*let self = this;
         // To avoid this bug --> https://github.com/angular/material2/issues/5268
         setTimeout(function() {
 
@@ -37,23 +33,10 @@ export class LoginComponent {
                     self.updateLoginLayout();
                   }
               });
-        },500);
-    }
-
-    openDialog() : void {
-
-        this.dialogRef = this.dialog.open(LoginFormComponent, {
-            data: {},
-            disableClose:true,
-            maxWidth: '100%'
-          });
-
-          this.updateLoginLayout();
-
+        },500);*/
     }
 
     updateLoginLayout(width: string = "40%", height: string = "40%"): void {
-        this.dialogRef.updateSize(width, height);
     }
 
 }

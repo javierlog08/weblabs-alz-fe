@@ -1,0 +1,39 @@
+.login {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.login .side {
+    padding:2%;
+    width: 30vw;
+}
+
+.login .content {
+    align-items: center;
+    justify-content: center;
+}
+
+.login .content .message {
+    position: absolute;
+    z-index: 1;
+    top: 25%;
+    text-align: center;
+    /*background-color: #2d2d2d;
+    opacity: .9;*/
+    padding-bottom: 30px;
+    width: 100%;
+    color: white;
+}
+
+.login .content .background {
+    position: relative;  
+    background-image: url("./../../assets/portalbg.jpg");
+    background-repeat: no-repeat;
+    opacity: .4;
+    background-size: 100% 100%;
+    height: 100vh !important;
+    z-index: -1;
+}

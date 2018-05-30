@@ -1,17 +1,12 @@
-<h1 mat-dialog-title>Log In</h1>
-<mat-dialog-content>
-    <div>
-        <div class="login-form">
-            <mat-form-field>
-                <input [(ngModel)]="model.username" matInput placeholder="Username">
-            </mat-form-field>
+<h1>Login</h1>
+<div class="login-form">
+    <mat-form-field>
+        <input [(ngModel)]="model.username" matInput placeholder="Username">
+    </mat-form-field>
 
-            <mat-form-field>
-                <input [(ngModel)]="model.password" matInput placeholder="Password">
-            </mat-form-field>
-        </div>
-    </div>
-</mat-dialog-content>
-<mat-dialog-actions>
-    <button mat-raised-button (click)="auth()"  color='primary'>LogIn</button>
-</mat-dialog-actions>
+    <mat-form-field>
+        <input [(ngModel)]="model.password" type="password" matInput placeholder="Password">
+    </mat-form-field>
+</div>
+
+<button mat-raised-button (click)="auth()"  color='primary'>LogIn</button>

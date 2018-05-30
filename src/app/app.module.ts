@@ -33,7 +33,7 @@ import { AuthService } from './shared/auth.service';
   ],
   entryComponents: [LoginFormComponent],
   bootstrap: [AppComponent],
-  providers:[AuthService],
+  providers:[AuthService, LoginFormComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

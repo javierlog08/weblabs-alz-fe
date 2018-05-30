@@ -18,7 +18,7 @@ class Login {
 
     model: Login = new Login();
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private authService: AuthService) {}
+    constructor(private authService: AuthService) {}
 
     ngOnInit() {
       
