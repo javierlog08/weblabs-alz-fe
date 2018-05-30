@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { HomeComponent } from './home/home.component';
 import { AppMaterial } from './app.material';
+import { AuthService } from './shared/auth.service';
 
 @NgModule({
   imports: [
@@ -32,7 +33,7 @@ import { AppMaterial } from './app.material';
   ],
   entryComponents: [LoginFormComponent],
   bootstrap: [AppComponent],
-  providers:[],
+  providers:[AuthService],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

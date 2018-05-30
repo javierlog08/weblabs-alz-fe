@@ -1,7 +1,13 @@
 
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
+import { AuthService } from '../../shared/auth.service';
 
+
+class Login {
+  username: string;
+  password: string;
+}
 
 @Component({
     selector: 'login-form',
@@ -9,10 +15,19 @@ import { MAT_DIALOG_DATA } from '@angular/material';
     styleUrls:['login-form.component.css']
   })
   export class LoginFormComponent{
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+
+    model: Login = new Login();
+
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private authService: AuthService) {}
 
     ngOnInit() {
       
+    }
+
+    auth(): void {
+      if(this.authService.login(this.model.username, this.model.password)) {
+        console.log("logged");
+      }
     }
   }
   
