@@ -1,8 +1,0 @@
-.login-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.login-form > * {
-    width: 100%;
-}
