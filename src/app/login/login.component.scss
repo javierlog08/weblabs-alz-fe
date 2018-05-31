@@ -7,8 +7,15 @@
     right: 0;
 
     .side {
-        padding:2%;
-        width: 30vw;
+        padding:2%;        
+        @media only screen and (min-width: 799px) and (max-width: 4000px) {
+            width: 30vw;
+        }
+
+        @media only screen and (max-width: 799px) {
+            width: 100vw;
+            padding:8%;
+        }
     }
 
     .content {
