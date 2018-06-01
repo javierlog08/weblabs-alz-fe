@@ -2,6 +2,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { AuthService } from '../../shared/auth.service';
+import { Router } from '@angular/router';
 
 
 class Login {
@@ -18,15 +19,13 @@ class Login {
 
     model: Login = new Login();
 
-    constructor(private authService: AuthService) {}
+    constructor(private authService: AuthService, private router: Router) {}
 
-    ngOnInit() {
-      
-    }
+    ngOnInit() { }
 
     auth(): void {
       if(this.authService.login(this.model.username, this.model.password)) {
-        console.log("logged");
+        this.router.navigate(['/home']);
       }
     }
   }
