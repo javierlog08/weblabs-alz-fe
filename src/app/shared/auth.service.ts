@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { ValidatorFn, AbstractControl } from '@angular/forms';
 
 @Injectable()
 export class AuthService implements CanActivate {
@@ -20,5 +21,11 @@ export class AuthService implements CanActivate {
 
   login(username: string, password: string) : boolean {    
     return this.isLogged
+  }
+
+  loginValidator(): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} => {
+      return (this.isLogged) ? null : { 'loginError': { value: " Wrong username or password. " } } ;
+    };
   }
 }

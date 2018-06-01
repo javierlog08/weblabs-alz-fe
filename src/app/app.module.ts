@@ -22,6 +22,7 @@ import { AuthService } from './shared/auth.service';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     AppMaterial
   ],
   exports:[],
