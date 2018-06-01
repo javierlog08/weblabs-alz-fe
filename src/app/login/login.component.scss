@@ -8,11 +8,12 @@
 
     .side {
         padding:2%;        
-        @media only screen and (min-width: 799px) and (max-width: 4000px) {
+        
+        @media only screen and (min-width: 801px) {
             width: 30vw;
         }
 
-        @media only screen and (max-width: 799px) {
+        @media only screen and (max-width: 800px) {
             width: 100vw;
             padding:8%;
         }
@@ -22,6 +23,8 @@
         
         align-items: center;
         justify-content: center;
+
+        width: 100vw;
 
         .message {
             position: absolute;
