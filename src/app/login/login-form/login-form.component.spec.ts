@@ -1,5 +1,5 @@
 import { TestBed, ComponentFixture } from "@angular/core/testing";
-import { FormsModule, ReactiveFormsModule, ValidatorFn, AbstractControl } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RootRenderer, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { Router } from "@angular/router";
 
@@ -7,12 +7,11 @@ import { LoginFormComponent } from "./login-form.component";
 import { AuthService } from "../../shared/auth.service";
 
 
-
-let authServiceStub: Partial<AuthService>;
-
 describe('LoginFormComponent',() => {
 
     let authServiceStub: Partial<AuthService>;
+
+    var isLogged = false;
 
     let fixtureLoginFormComponent : ComponentFixture<LoginFormComponent>;
 
@@ -20,22 +19,16 @@ describe('LoginFormComponent',() => {
 
     beforeEach(()=>{
         authServiceStub = {
-            isLogged: false,
         
             login(username: string, password: string) : boolean { 
                    
                 if(username == "test" && password == "test") {
-                    this.isLogged = true;    
+                    return true;    
+                } else {
+                    return false;
                 }
-        
-                return this.isLogged;
-              },
+            }
 
-              loginValidator(): ValidatorFn {
-                return (control: AbstractControl): {[key: string]: any} => {
-                  return (this.isLogged) ? null : { 'loginError': { value: " Wrong username or password. " } } ;
-                };
-              }
         }
 
         routerSpy = jasmine.createSpyObj('Router', ['navigate']);
@@ -57,29 +50,28 @@ describe('LoginFormComponent',() => {
     it('Should redirect to home on sucess login',() => {
         const component = fixtureLoginFormComponent.componentInstance;
 
-        component.loginModel.username = "test";
-        component.loginModel.password = "test";
+        component.ngOnInit();
 
-        fixtureLoginFormComponent.detectChanges();
-        
+        component.loginForm.controls.username.setValue("test");
+        component.loginForm.controls.password.setValue("test");
+                
         component.auth();
+
+        expect(component.loginForm.invalid).toBe(false);
 
         const spy = routerSpy.navigate as jasmine.Spy;
 
         const navArgs = spy.calls.first().args[0];
 
         expect(navArgs[0]).toBe("/home");
-        expect(component.loginForm.invalid).toBe(false);
-    
+
     });
     
     it('Should send login form invalid on wrong credentials',() => {
         const component = fixtureLoginFormComponent.componentInstance;
 
-        component.loginModel.username = "wrongusername";
-        component.loginModel.password = "worngpassword";
-
-        fixtureLoginFormComponent.detectChanges();
+        component.loginForm.controls.username.setValue("wrongpassword");
+        component.loginForm.controls.password.setValue("wrongpassword");
 
         component.auth();
 

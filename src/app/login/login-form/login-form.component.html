@@ -13,7 +13,7 @@
 
             <mat-form-field>
                 <input formControlName="password" type="password" matInput placeholder="Password">
-                <mat-error *ngIf="loginForm.get('password').invalid">{{loginForm.get("password").getError("loginError").value}}</mat-error>
+                <mat-error *ngIf="loginForm.get('password').invalid">{{loginForm.getError("password")}}</mat-error>
             </mat-form-field>
         </form>
 
