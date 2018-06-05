@@ -76,7 +76,6 @@ describe('LoginFormComponent',() => {
         component.auth();
 
         expect(component.loginForm.invalid).toBe(true);
-        
-    
     });
+
 });

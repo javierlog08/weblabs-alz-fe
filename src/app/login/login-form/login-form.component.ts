@@ -1,6 +1,5 @@
 
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
 import { AuthService } from '../../shared/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -25,10 +24,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
       if(this.authService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value)) {
         this.router.navigate(['/home']);
       } else {
-        this.loginForm.setErrors({
-          username: "Wrong username or password",
-          password: "Wrong username or password"
-        });
+        this.setValidationErrors();
+        
 
       }
     }
@@ -36,13 +33,25 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     createForm() {
       this.loginForm = this.formBuilder.group({
         username:[
-          '', [Validators.required]
+          '', []
         ],
         password: [
-          '', [Validators.required]
+          '', []
         ]
       });
+    }
 
+    setValidationErrors() {
+      this.loginForm.controls.username.setErrors({
+        "loginError": "Wrong username or password"
+      });
+
+      this.loginForm.controls.password.setErrors({
+        "loginError": "Wrong username or password"
+      });
+
+      this.loginForm.controls.username.markAsTouched();
+      this.loginForm.controls.password.markAsTouched();
     }
   }
   

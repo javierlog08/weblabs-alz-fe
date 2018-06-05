@@ -11,7 +11,7 @@ export class AuthService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : boolean {
 
-    if(!this._isLogged) {
+    if(!this.isLogged()) {
       this.router.navigate(['/login']);
     }
 
@@ -19,10 +19,18 @@ export class AuthService implements CanActivate {
     return this._isLogged;
   }
 
+  /**
+   * You should use this to validate the login, it could to be async, must return true or false
+   * @param username 
+   * @param password 
+   */
   login(username: string, password: string) : boolean {    
     return this._isLogged
   }
 
+  /**
+   * Return true if the user is logged
+   */
   isLogged() : boolean {
     return this._isLogged;
   }

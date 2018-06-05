@@ -13,10 +13,9 @@
 
             <mat-form-field>
                 <input formControlName="password" type="password" matInput placeholder="Password">
-                <mat-error *ngIf="loginForm.get('password').invalid">{{loginForm.getError("password")}}</mat-error>
+                <mat-error *ngIf="loginForm.controls.password.hasError('loginError')">{{loginForm.controls.password.getError("loginError")}}</mat-error>
             </mat-form-field>
         </form>
-
     </div>
 </div>
 
