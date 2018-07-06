@@ -2,6 +2,7 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import 'https://fonts.googleapis.com/icon?family=Roboto';
 
+// Following the guide ->https://material.angular.io/guide/theming#defining-a-custom-theme we can customize material colors for theming propuse
 // Lets to use Roboto Font
 body {
  font-family: Roboto;
@@ -17,11 +18,11 @@ body {
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$custom-app-primary: mat-palette($mat-red,600,100,900);
+$custom-app-primary: mat-palette($mat-indigo,600,100,900);
 $custom-app-accent:  mat-palette($mat-indigo);
 
 // The warn palette is optional (defaults to red).
-$custom-app-warn:    mat-palette($mat-red);
+$custom-app-warn:    mat-palette($mat-indigo);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $custom-app-light-theme: mat-light-theme($custom-app-primary, $custom-app-accent, $custom-app-warn);
