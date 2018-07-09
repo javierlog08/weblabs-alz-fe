@@ -12,6 +12,7 @@ import { LoginFormComponent } from './login/login-form/login-form.component';
 import { HomeComponent } from './home/home.component';
 import { AppMaterial } from './app.material';
 import { AuthService } from './shared/auth.service';
+import { HttpClientModule } from '../../node_modules/@angular/common/http';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { AuthService } from './shared/auth.service';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppMaterial
   ],
   exports:[],

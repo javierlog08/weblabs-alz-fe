@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot, Router } from '@angular/router';
-import { ValidatorFn, AbstractControl } from '@angular/forms';
+import { HttpClient, HttpResponse, HttpHeaders} from '../../../node_modules/@angular/common/http';
 
 @Injectable()
 export class AuthService implements CanActivate {
 
   private _isLogged: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : boolean {
 
@@ -25,6 +25,21 @@ export class AuthService implements CanActivate {
    * @param password 
    */
   login(username: string, password: string) : boolean {    
+
+    let options = {
+      headers: {
+        "Authorization":"Basic "+btoa(username+":"+password)
+      }
+    }
+
+    this.http.post("http://127.0.0.1:8080/foo",options).subscribe(
+      (resp: HttpResponse<Text>) => {
+        console.log(resp);
+      }, err => {
+        console.log(err);
+      }
+    );
+
     return this._isLogged
   }
 
