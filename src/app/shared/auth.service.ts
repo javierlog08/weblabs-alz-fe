@@ -26,15 +26,13 @@ export class AuthService implements CanActivate {
    */
   login(username: string, password: string) : boolean {    
 
-    let options = {
-      headers: {
+    const headers = {
         "Authorization":"Basic "+btoa(username+":"+password)
-      }
     }
 
-    this.http.post("http://127.0.0.1:8080/foo",options).subscribe(
-      (resp: HttpResponse<Text>) => {
-        console.log(resp);
+    this.http.get("http://127.0.0.1:8080/login",{headers:headers, observe:'response', responseType: 'text'}).subscribe(
+      (resp) => {
+        console.log(resp.headers.get('x-auth-token'));
       }, err => {
         console.log(err);
       }
