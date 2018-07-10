@@ -20,14 +20,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     ngOnInit() { }
 
     auth(): void {
-      
-      if(this.authService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value)) {
-        this.router.navigate(['/home']);
-      } else {
-        this.setValidationErrors();
-        
-
-      }
+      this.authService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value)
+        .subscribe((success)=> {
+          if(success) {
+            this.router.navigate(['/home']);
+          } else {
+            this.setValidationErrors();
+          }
+        });
     }
 
     createForm() {
