@@ -1,0 +1,17 @@
+.loader-component {
+    .mat-dialog-container {
+        background-color: transparent !important;
+        box-shadow: none;
+        loader-component {
+            .mat-dialog-content {
+                overflow: hidden;
+                .mat-spinner {
+                    circle {
+                        stroke: white;
+                    }
+                }
+            }
+        }
+        
+    }
+}

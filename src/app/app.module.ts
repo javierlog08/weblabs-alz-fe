@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { AppMaterial } from './app.material';
 import { AuthService } from './shared/auth.service';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 @NgModule({
   imports: [
@@ -32,9 +33,10 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
     AppComponent,
     LoginComponent,
     LoginFormComponent,
-    HomeComponent
+    HomeComponent,
+    LoaderComponent
   ],
-  entryComponents: [LoginFormComponent],
+  entryComponents: [LoginFormComponent,LoaderComponent],
   bootstrap: [AppComponent],
   providers:[AuthService, LoginFormComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]

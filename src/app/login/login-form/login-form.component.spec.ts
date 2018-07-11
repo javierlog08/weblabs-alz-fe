@@ -1,6 +1,6 @@
 import { TestBed, ComponentFixture } from "@angular/core/testing";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RootRenderer, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { LoginFormComponent } from "./login-form.component";
