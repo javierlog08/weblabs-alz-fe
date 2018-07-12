@@ -1,0 +1,11 @@
+<app-header [appMainSideNav]="appMainSideNav"></app-header>
+
+<mat-drawer-container #appMainContainer class="main-container">
+    <mat-drawer #appMainSideNav class="main-sidenav" mode="side" opened>
+      <app-menu></app-menu>
+    </mat-drawer>
+
+    <mat-drawer-content class="main-content">
+      Main content
+    </mat-drawer-content>
+</mat-drawer-container>

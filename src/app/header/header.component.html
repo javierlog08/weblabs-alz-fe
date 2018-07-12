@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button>
+    <mat-icon (click)="toggleSideNav()">menu</mat-icon>
+  </button>
+  <h1 class="app-title">My Application</h1>
+  <span class="fill-space"></span>
+  <app-options></app-options>
+  <button mat-icon-button [matMenuTriggerFor]="settings.menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+</mat-toolbar>

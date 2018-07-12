@@ -12,8 +12,12 @@ import { LoginFormComponent } from './login/login-form/login-form.component';
 import { HomeComponent } from './home/home.component';
 import { AppMaterial } from './app.material';
 import { AuthService } from './shared/auth.service';
-import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { LoaderComponent } from './shared/loader/loader.component';
+import { HeaderComponent } from './header/header.component';
+import { OptionsComponent } from './header/options/options.component';
+import { MenuComponent } from './menu/menu.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   imports: [
@@ -34,7 +38,11 @@ import { LoaderComponent } from './shared/loader/loader.component';
     LoginComponent,
     LoginFormComponent,
     HomeComponent,
-    LoaderComponent
+    LoaderComponent,
+    HeaderComponent,
+    OptionsComponent,
+    MenuComponent,
+    MainComponent
   ],
   entryComponents: [LoginFormComponent,LoaderComponent],
   bootstrap: [AppComponent],
