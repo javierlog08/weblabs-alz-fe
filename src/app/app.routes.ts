@@ -6,8 +6,14 @@ import { AuthService } from './shared/auth.service';
 import { MainComponent } from './main/main.component';
 
 export const AppRoutes: Routes = [
+    { 
+        path: 'main', 
+        component: MainComponent, 
+        canActivate:[AuthService],
+        children:[
+            { path: 'home', component: HomeComponent },
+        ]
+    },
     { path: 'login', component: LoginComponent },
-    { path: 'home', component: HomeComponent, canActivate:[AuthService] },
-    { path: 'main', component: MainComponent, canActivate:[AuthService] },
-    { path: '',   redirectTo: '/main', pathMatch: 'full' },
+    { path: '',   redirectTo: '/main/home', pathMatch: 'full' },
 ]
