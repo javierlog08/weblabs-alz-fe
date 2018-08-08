@@ -18,6 +18,7 @@ import { HeaderComponent } from './header/header.component';
 import { OptionsComponent } from './header/options/options.component';
 import { MenuComponent } from './menu/menu.component';
 import { MainComponent } from './main/main.component';
+import { BooksComponent } from './books/books.component';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { MainComponent } from './main/main.component';
     HeaderComponent,
     OptionsComponent,
     MenuComponent,
-    MainComponent
+    MainComponent,
+    BooksComponent
   ],
   entryComponents: [LoginFormComponent,LoaderComponent],
   bootstrap: [AppComponent],

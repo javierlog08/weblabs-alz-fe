@@ -38,7 +38,7 @@ export class AuthService implements CanActivate {
       }
 
       this.loader.openLoader();
-      this.http.get(this.api.getUrl("login"),{headers:headers, observe:'response', responseType: 'text'}).subscribe(
+      this.http.get(this.api.getEndpointUrl("login"),{headers:headers, observe:'response', responseType: 'text'}).subscribe(
         (resp) => {
           this.storage.setValue("session-token",resp.headers.get('x-auth-token'));
           observer.next(true);
@@ -60,7 +60,7 @@ export class AuthService implements CanActivate {
     }
 
     this.loader.openLoader();
-    this.http.get(this.api.getUrl("logout"),{headers:headers, observe:'response', responseType: 'text'}).subscribe(
+    this.http.get(this.api.getEndpointUrl("logout"),{headers:headers, observe:'response', responseType: 'text'}).subscribe(
         (resp) => {
           this.router.navigate(['/login']);
           this.loader.closeLoader();
@@ -83,7 +83,7 @@ export class AuthService implements CanActivate {
           "x-auth-token": this.storage.getValue("session-token")
       }
       
-      this.http.get(this.api.getUrl("login"),{headers:headers, observe:'response', responseType: 'text'}).subscribe(
+      this.http.get(this.api.getEndpointUrl("login"),{headers:headers, observe:'response', responseType: 'text'}).subscribe(
         (resp) => {
           observer.next(true);
         }, err => {

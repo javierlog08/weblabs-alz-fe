@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthService } from './shared/auth.service';
 import { MainComponent } from './main/main.component';
+import { BooksComponent } from './books/books.component';
 
 export const AppRoutes: Routes = [
     { 
@@ -11,9 +12,10 @@ export const AppRoutes: Routes = [
         component: MainComponent, 
         canActivate:[AuthService],
         children:[
-            { path: 'home', component: HomeComponent },
+            { path: '', component: HomeComponent },
+            { path: 'books', component: BooksComponent },
         ]
     },
     { path: 'login', component: LoginComponent },
-    { path: '',   redirectTo: '/main/home', pathMatch: 'full' },
+    { path: '',   redirectTo: '/main', pathMatch: 'full' },
 ]

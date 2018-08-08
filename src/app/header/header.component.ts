@@ -10,6 +10,8 @@ import { MatSidenav, MatDrawer } from '../../../node_modules/@angular/material';
 })
 export class HeaderComponent implements OnInit {
 
+  title: string;
+
   @ViewChild(OptionsComponent) settings: OptionsComponent;
 
   @Input() appMainSideNav: MatDrawer;
@@ -21,6 +23,10 @@ export class HeaderComponent implements OnInit {
 
   toggleSideNav() {
     this.appMainSideNav.toggle();
+  }
+
+  setTitle(title: string) {
+    this.title = title;
   }
 
 }

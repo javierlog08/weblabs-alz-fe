@@ -6,6 +6,7 @@
     "endpoints": {
         "home": "/",
         "login": "/login",
-        "logout": "/logout"
+        "logout": "/logout",
+        "books": "/books"
     }
 }

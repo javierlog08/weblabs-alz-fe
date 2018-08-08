@@ -1,11 +1,11 @@
-<app-header [appMainSideNav]="appMainSideNav"></app-header>
+<app-header #appMainHeader [appMainSideNav]="appMainSideNav"></app-header>
 
 <mat-drawer-container #appMainContainer class="main-container">
-    <mat-drawer #appMainSideNav class="main-sidenav" mode="side" opened>
+    <mat-drawer #appMainSideNav class="main-sidenav" mode="side">
       <app-menu></app-menu>
     </mat-drawer>
 
     <mat-drawer-content class="main-content">
-      <router-outlet></router-outlet>
+      <router-outlet (activate)="onRouterActivate($event)"></router-outlet>
     </mat-drawer-content>
 </mat-drawer-container>
