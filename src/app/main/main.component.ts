@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ComponentRef } from '@angular/core';
 import { MatSidenav } from '../../../node_modules/@angular/material';
+import { AppComponentInterface } from '../shared/app.component.interface';
 
 @Component({
   selector: 'app-main',
@@ -8,9 +9,15 @@ import { MatSidenav } from '../../../node_modules/@angular/material';
 })
 export class MainComponent implements OnInit {
 
+  @ViewChild('appMainHeader') appMainHeader;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onRouterActivate(component: AppComponentInterface) {
+    this.appMainHeader.setTitle(component.title);
   }
 
 }

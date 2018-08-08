@@ -1,5 +1,9 @@
-<mat-list>
-    <mat-list-item> Pepper </mat-list-item>
-    <mat-list-item> Salt </mat-list-item>
-    <mat-list-item> Paprika </mat-list-item>
-</mat-list>
+<mat-nav-list>
+    <mat-list-item>
+        <a [routerLink]="['/']" matLine><mat-icon>home</mat-icon> Home </a>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+        <a [routerLink]="['books']" matLine><mat-icon>book</mat-icon> Books </a>
+    </mat-list-item>
+</mat-nav-list>
