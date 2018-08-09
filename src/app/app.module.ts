@@ -19,6 +19,7 @@ import { OptionsComponent } from './header/options/options.component';
 import { MenuComponent } from './menu/menu.component';
 import { MainComponent } from './main/main.component';
 import { BooksComponent } from './books/books.component';
+import { ClientsComponent } from './clients/clients.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { BooksComponent } from './books/books.component';
     OptionsComponent,
     MenuComponent,
     MainComponent,
-    BooksComponent
+    BooksComponent,
+    ClientsComponent
   ],
   entryComponents: [LoginFormComponent,LoaderComponent],
   bootstrap: [AppComponent],

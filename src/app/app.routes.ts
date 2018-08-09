@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthService } from './shared/auth.service';
 import { MainComponent } from './main/main.component';
 import { BooksComponent } from './books/books.component';
+import { ClientsComponent } from './clients/clients.component';
 
 export const AppRoutes: Routes = [
     { 
@@ -14,6 +15,7 @@ export const AppRoutes: Routes = [
         children:[
             { path: '', component: HomeComponent },
             { path: 'books', component: BooksComponent },
+            { path: 'clients', component: ClientsComponent },
         ]
     },
     { path: 'login', component: LoginComponent },
