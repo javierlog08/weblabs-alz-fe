@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   @ViewChild(OptionsComponent) settings: OptionsComponent;
 
-  @Input() appMainSideNav: MatDrawer;
+  @Input() appMainSideNav: MatSidenav;
 
   constructor() { }
 

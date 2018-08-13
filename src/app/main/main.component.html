@@ -1,11 +1,12 @@
 <app-header #appMainHeader [appMainSideNav]="appMainSideNav"></app-header>
 
-<mat-drawer-container #appMainContainer class="main-container">
-    <mat-drawer #appMainSideNav class="main-sidenav" mode="side">
+<mat-sidenav-container #appMainContainer class="main-container">
+    <mat-sidenav #appMainSideNav class="main-sidenav" mode="over" [fixedInViewport]=true [fixedTopGap]=0
+    [fixedBottomGap]=0>
       <app-menu></app-menu>
-    </mat-drawer>
+    </mat-sidenav>
 
-    <mat-drawer-content class="main-content">
+    <mat-sidenav-content class="main-content">
       <router-outlet (activate)="onRouterActivate($event)"></router-outlet>
-    </mat-drawer-content>
-</mat-drawer-container>
+    </mat-sidenav-content>
+</mat-sidenav-container>

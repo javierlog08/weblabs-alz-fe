@@ -1,5 +1,8 @@
 import { NgModule } from "@angular/core";
 
+import {ScrollDispatchModule} from '@angular/cdk/scrolling';
+
+
 import { 
     MatDialogModule, 
     MatButtonModule, 
@@ -13,7 +16,7 @@ import {
     MatListModule, 
     MatCardModule, 
     MatTableModule,
-    MatTabsModule
+    MatTabsModule,
 } from "@angular/material";
 
 @NgModule ({
@@ -31,7 +34,8 @@ import {
         MatListModule,
         MatCardModule,
         MatTableModule,
-        MatTabsModule
+        MatTabsModule,
+        ScrollDispatchModule
     ]
 })
 export class AppMaterial {}

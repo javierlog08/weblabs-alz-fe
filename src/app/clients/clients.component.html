@@ -2,9 +2,11 @@
   <mat-card-content>
     <mat-tab-group>
       <mat-tab label="Natural">
-
-        <h1>Some more tab content natural </h1>
-        <p>...</p>
+        <mat-list cdkScrollable>
+          <mat-list-item *ngFor="let client of naturalClients">
+              {{client.nombre_completo}}
+          </mat-list-item>
+        </mat-list>
       </mat-tab>
 
       <mat-tab label="Júridico">
