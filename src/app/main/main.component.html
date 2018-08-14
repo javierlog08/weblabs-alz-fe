@@ -6,7 +6,7 @@
       <app-menu></app-menu>
     </mat-sidenav>
 
-    <mat-sidenav-content class="main-content">
+    <mat-sidenav-content class="main-content" cdkScrollable>
       <router-outlet (activate)="onRouterActivate($event)"></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

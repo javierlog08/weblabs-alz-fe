@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { AppComponentInterface } from '../shared/app.component.interface';
 import { ClientsService } from './clients.service';
 import { ScrollDispatcher, CdkScrollable } from '@angular/cdk/scrolling';
-import { Subscription } from '../../../node_modules/rxjs';
+import { _ } from 'underscore';
 
-const ITEMS_PER_PAGE = 20;
 
 @Component({
   selector: 'app-clients',
@@ -19,41 +18,40 @@ export class ClientsComponent implements OnInit, AppComponentInterface, AfterVie
 
   last_page = 1;
   lastScrollTop: number = 0;
-  direction: string = "";
+  ITEMS_PER_PAGE: number = 20;
 
-  constructor(private clientService: ClientsService, private scrollDispatcher: ScrollDispatcher) { }
+  constructor(private clientService: ClientsService, private scrollDispatcher: ScrollDispatcher, private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this._getClients(this.last_page, ITEMS_PER_PAGE);
-    
+    this._getClients(this.last_page, this.ITEMS_PER_PAGE);
   }
 
   ngAfterViewInit() {
-    
-
-    this.scrollDispatcher.scrolled().subscribe(()=>{
-      let st = window.pageYOffset;
-
-      let dir = '';
-      if (st > this.lastScrollTop) {
-          dir = "down";
-      } else {
-          dir = "up";
+    this.scrollDispatcher.scrolled().subscribe((element: CdkScrollable)=>{
+      if(element) {
+        let mainContentDiv = element.getElementRef().nativeElement  as HTMLElement;
+        if(mainContentDiv.className.indexOf("main-content") > -1) {
+          this._addListScrollHandler(mainContentDiv);
+        }
       }
-
-      this.lastScrollTop = st;
-
-      if(dir == "down") {
-        this.last_page = (this.last_page + ITEMS_PER_PAGE);
-        this._getClients(this.last_page, ITEMS_PER_PAGE);
-      }
-
     });
+  }
+
+  private _addListScrollHandler(e: HTMLElement) {
+    let st = e.scrollTop;
+
+    if (st > this.lastScrollTop) {
+      this.last_page = (this.last_page + this.ITEMS_PER_PAGE);
+      this._getClients(this.last_page, this.ITEMS_PER_PAGE);
+    } 
+
+    this.lastScrollTop = st;
   }
 
   private _getClients(start, offset) {
     this.clientService.getClients(start, offset).subscribe((res)=> {
-      this.naturalClients = this.naturalClients.concat(res);
+      this.naturalClients = _.uniq(this.naturalClients.concat(res));
+      this.ref.detectChanges();
     });
   }
 
