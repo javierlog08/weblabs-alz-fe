@@ -1,23 +1,23 @@
-<mat-toolbar>
-  <div>My Application</div>
-</mat-toolbar>
-<div>
-    <mat-card>
-        <mat-card-content>
-          <mat-tab-group>
-            <mat-tab label="Natural">
-              <mat-list>
-                <mat-list-item *ngFor="let client of naturalClients">
-                    {{client.nombre_completo}}
-                </mat-list-item>
-              </mat-list>
-            </mat-tab>
-      
-            <mat-tab label="Júridico">
-              <h1>Some more tab content natural</h1>
-              <p>...</p>
-            </mat-tab>
-          </mat-tab-group>
-        </mat-card-content>
-      </mat-card>
-</div>
+
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      Naturales
+    </ng-template>
+    
+    <mat-list>
+      <mat-list-item *ngFor="let client of naturalClients">
+          {{client.nombre_completo}}
+      </mat-list-item>
+    </mat-list>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      Juridicos
+    </ng-template>
+    
+    ....
+  </mat-tab>
+
+</mat-tab-group>

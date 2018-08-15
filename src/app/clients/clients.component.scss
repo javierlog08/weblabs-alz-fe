@@ -1,6 +1,23 @@
 :host {
+
+    $body_size : 960px;
+
     .mat-card {
-        width:960px;
+        width:$body_size;
         margin: 0 auto;
+    }
+
+    .tab-header {
+        position: fixed;
+        z-index: 20;
+
+        div {
+            width: $body_size;
+            margin: 0 auto;
+        }
+    }
+
+    .tab-content {
+        margin-top: -20px;
     }
 }
