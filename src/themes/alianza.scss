@@ -19,10 +19,10 @@ body {
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $custom-app-primary: mat-palette($mat-indigo,600,100,900);
-$custom-app-accent:  mat-palette($mat-indigo);
+$custom-app-accent:  mat-palette($mat-pink);
 
 // The warn palette is optional (defaults to red).
-$custom-app-warn:    mat-palette($mat-indigo);
+$custom-app-warn:    mat-palette($mat-pink);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $custom-app-light-theme: mat-light-theme($custom-app-primary, $custom-app-accent, $custom-app-warn);
@@ -31,5 +31,11 @@ $custom-app-dark-theme: mat-dark-theme($custom-app-primary, $custom-app-accent, 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
+
 @include angular-material-theme($custom-app-light-theme);
-//@include mat-sidenav-theme($custom-app-dark-theme);
+
+// Export theme colors
+$primary: mat-color($custom-app-primary);
+$accent: mat-color($custom-app-accent);
+$warn: mat-color($custom-app-warn);
+

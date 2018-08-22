@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
-
+import { OverlayModule } from "../../node_modules/@angular/cdk/overlay";
 
 import { 
     MatDialogModule, 
@@ -19,6 +19,7 @@ import {
     MatTabsModule,
 } from "@angular/material";
 
+
 @NgModule ({
     exports: [
         MatDialogModule,
@@ -35,7 +36,8 @@ import {
         MatCardModule,
         MatTableModule,
         MatTabsModule,
-        ScrollDispatchModule
+        ScrollDispatchModule,
+        OverlayModule
     ]
 })
 export class AppMaterial {}

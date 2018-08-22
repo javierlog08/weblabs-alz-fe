@@ -1,3 +1,5 @@
+@import "./src/themes/alianza.scss";
+
 :host {
 
     $body_size : 960px;
@@ -21,8 +23,7 @@
         margin-top: -20px;
     }
 
-    .mat-tab-group {
-
+    /deep/ .mat-tab-group {
         .mat-tab-body-wrapper {
             margin: 0 auto;
             width: 960px;
@@ -30,15 +31,24 @@
         }
 
         .mat-tab-header {
+            font-size: 100px !important;
             position: fixed;
             width: 100%;
             z-index: 10;
+            background-color: $primary;
 
             .mat-tab-label-container {
                 .mat-tab-list {
                     .mat-tab-labels {
                         width: 960px;
                         margin: 0 auto;
+                        .mat-tab-label-content {
+                            color: white;
+                        }
+                    }
+
+                    .mat-ink-bar {
+                        background-color: $accent;
                     }
                 }
             }

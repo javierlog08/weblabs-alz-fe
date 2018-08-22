@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, ElementRef, ViewEncapsulation } from '@angular/core';
 import { AppComponentInterface } from '../shared/app.component.interface';
 import { ClientsService } from './clients.service';
 import { ScrollDispatcher, CdkScrollable } from '@angular/cdk/scrolling';
@@ -20,7 +20,11 @@ export class ClientsComponent implements OnInit, AppComponentInterface, AfterVie
   lastScrollTop: number = 0;
   ITEMS_PER_PAGE: number = 20;
 
-  constructor(private clientService: ClientsService, private scrollDispatcher: ScrollDispatcher, private ref: ChangeDetectorRef) { }
+  constructor(
+    private clientService: ClientsService, 
+    private scrollDispatcher: ScrollDispatcher, 
+    private ref: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this._getClients(this.last_page, this.ITEMS_PER_PAGE);
