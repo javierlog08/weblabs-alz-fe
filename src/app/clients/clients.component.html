@@ -1,22 +1,77 @@
 
-<mat-tab-group [color]="$pink" [backgroundColor]="$pink">
+<mat-tab-group>
   <mat-tab>
     <ng-template mat-tab-label>
-      Naturales
+      Todos
     </ng-template>
     
     <mat-list>
-      <mat-list-item *ngFor="let client of naturalClients">
-          {{client.nombre_completo}}
-      </mat-list-item>
+      <div *ngFor="let client of clients">
+          <mat-list-item>
+              <button mat-mini-fab *ngIf="client.persona.trim() !=='Jurídica'">
+                  <mat-icon mat-list-icon >face</mat-icon>
+              </button>
+
+              <button mat-mini-fab color="primary"  *ngIf="client.persona.trim() ==='Jurídica'">
+                  <mat-icon mat-list-icon >business</mat-icon>
+              </button>
+              <div class="item-list-detail">
+                  <h4>{{client.nombreCompleto}}</h4>
+                  <p><b>Cip: </b> {{client.cip_ruc}}</p>
+                  <p><b>Telefonos: </b> {{client.phones}}</p>
+              </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+      </div>
     </mat-list>
   </mat-tab>
 
   <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>face</mat-icon> 
+        Naturales
+      </ng-template>
+      <mat-list>
+          <div *ngFor="let client of clients">
+            <div *ngIf="client.persona.trim() !=='Jurídica'">
+                <mat-list-item >
+                    <button mat-mini-fab >
+                        <mat-icon mat-list-icon >face</mat-icon>
+                    </button>
+                    <div class="item-list-detail">
+                        <h4>{{client.nombreCompleto}}</h4>
+                        <p><b>Cip: </b> {{client.cip_ruc}}</p>
+                        <p><b>Telefonos: </b> {{client.phones}}</p>
+                    </div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+            </div>
+          </div>
+        </mat-list>
+    </mat-tab>
+
+  <mat-tab>
     <ng-template mat-tab-label>
+      <mat-icon>business</mat-icon> 
       Juridicos
     </ng-template>
     
-    ....
+    <mat-list>
+        <div *ngFor="let client of clients">
+          <div *ngIf="client.persona.trim() ==='Jurídica'">
+              <mat-list-item  >
+                  <button mat-mini-fab color="primary" >
+                      <mat-icon mat-list-icon >business</mat-icon>
+                  </button>
+                  <div class="item-list-detail">
+                      <h4>{{client.nombreCompleto}}</h4>
+                      <p><b>Cip: </b> {{client.cip_ruc}}</p>
+                      <p><b>Telefonos: </b> {{client.phones}}</p>
+                  </div>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+          </div>
+        </div>
+      </mat-list>
   </mat-tab>
 </mat-tab-group>

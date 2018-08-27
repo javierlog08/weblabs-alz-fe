@@ -23,6 +23,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
       this.authService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value)
         .subscribe((success)=> {
           if(success) {
+            localStorage.setItem('user_name',this.loginForm.controls.username.value);
             this.router.navigate(['/']);
           } else {
             this.setValidationErrors();

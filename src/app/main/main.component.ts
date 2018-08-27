@@ -19,6 +19,7 @@ export class MainComponent implements OnInit {
 
   onRouterActivate(component: AppComponentInterface) {
     this.appMainHeader.setTitle(component.title);
+    this.appMainHeader.setSearchHandler(component.searchHandler,component.hasSearch,component.searchPlaceHolder);
   }
 
 }

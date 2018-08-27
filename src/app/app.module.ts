@@ -20,6 +20,7 @@ import { MenuComponent } from './menu/menu.component';
 import { MainComponent } from './main/main.component';
 import { BooksComponent } from './books/books.component';
 import { ClientsComponent } from './clients/clients.component';
+import { SearchComponent } from './header/search/search.component';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { ClientsComponent } from './clients/clients.component';
     MenuComponent,
     MainComponent,
     BooksComponent,
-    ClientsComponent
+    ClientsComponent,
+    SearchComponent
   ],
   entryComponents: [LoginFormComponent,LoaderComponent],
   bootstrap: [AppComponent],

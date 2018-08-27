@@ -2,6 +2,13 @@
 
    .app-title {
         margin-left:2%;
+        @media only screen and (min-width: 801px) {
+            display: block;
+        }
+    
+        @media only screen and (max-width: 800px) {
+            display: none;
+        }
     }
 
     .fill-space {

@@ -8,6 +8,7 @@
         "login": "/login",
         "logout": "/logout",
         "books": "/books",
-        "clients": "/clients"
+        "clients": "/clients",
+        "clientsSearch": "/clients/search"
     }
 }

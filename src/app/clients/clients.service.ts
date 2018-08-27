@@ -12,4 +12,8 @@ export class ClientsService {
   getClients(start, offset): Observable<any> {
     return this.api.get("clients", {"start_page": start, "end_page":offset});
   }
+
+  getClientsByTerm(term:string): Observable<any> {
+    return this.api.get("clientsSearch", {"term": term});
+  }
 }

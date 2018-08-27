@@ -1,0 +1,29 @@
+:host {
+    width: 1055px;
+    margin:0 auto;
+    .mat-card {  
+        height: 0px;
+        input {
+            position: absolute;
+            top: 3px;
+            left: 60px;
+            width: 74%;
+            height: 83%;
+            border: none !important;
+
+            &:focus {
+                outline: none !important;
+                outline-style: none !important;
+                box-shadow: none !important;
+                border-color: transparent !important;
+            }
+        }     
+        
+        .mat-icon {
+            top: 15px;
+            position: absolute;
+            left: 15px;
+        }
+
+    }
+}

@@ -1,5 +1,9 @@
 :host {
+    $body_size : 960px;
+
     .mat-card {
-        margin: 2%;
-    } 
+        width:$body_size;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
 }

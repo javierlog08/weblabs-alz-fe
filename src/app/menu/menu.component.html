@@ -1,13 +1,20 @@
+<mat-toolbar color="primary">
+    <span>{{username}}</span>
+    <span class="fill-space"></span>
+    <button mat-icon-button>
+        <mat-icon (click)="closeMenu()">close</mat-icon>
+    </button>
+</mat-toolbar>
 <mat-nav-list [color]="primary">
-    <mat-list-item>
+    <mat-list-item (click)="closeMenu()">
         <a [routerLink]="['/']" matLine><mat-icon>home</mat-icon> Home </a>
     </mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>
+    <mat-list-item (click)="closeMenu()">
         <a [routerLink]="['clients']" matLine><mat-icon>face</mat-icon> Clientes </a>
     </mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>
+    <mat-list-item (click)="closeMenu()">
         <a [routerLink]="['books']" matLine><mat-icon>book</mat-icon> Books </a>
     </mat-list-item>
 </mat-nav-list>

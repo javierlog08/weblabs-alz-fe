@@ -8,10 +8,18 @@ import { AppComponentInterface } from '../shared/app.component.interface';
 })
 export class HomeComponent implements OnInit,AppComponentInterface {
 
+  searchPlaceHolder: string = "";
+
+  hasSearch: boolean = false;
+  
   title: string = "Home";
   
   constructor() { }
 
   ngOnInit() {
+  }
+
+  searchHandler() {
+    throw new Error("Method not implemented.");
   }
 }

@@ -8,6 +8,11 @@ import { AppComponentInterface } from '../shared/app.component.interface';
   styleUrls: ['./books.component.scss']
 })
 export class BooksComponent implements OnInit, AppComponentInterface {
+  searchPlaceHolder: string;
+  hasSearch: boolean = false;
+  searchHandler() {
+    throw new Error("Method not implemented.");
+  }
 
   title: string = "Books";
 
