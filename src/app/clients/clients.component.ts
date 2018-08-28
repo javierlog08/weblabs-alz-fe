@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, ElementRef, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef} from '@angular/core';
 import { AppComponentInterface } from '../shared/app.component.interface';
 import { ClientsService } from './clients.service';
 import { ScrollDispatcher, CdkScrollable } from '@angular/cdk/scrolling';
 import { _ } from 'underscore';
+import { LoaderService } from '../shared/loader/loader.service';
+import { MatTabGroup } from '../../../node_modules/@angular/material';
 
 var self = null;
 
@@ -23,12 +25,15 @@ export class ClientsComponent implements OnInit, AppComponentInterface, AfterVie
   lastScrollTop: number = 0;
   ITEMS_PER_PAGE: number = 15;
   searchTerm: string = "";
+
+  @ViewChild(MatTabGroup) clientTabs:MatTabGroup;
   
 
   constructor(
     private clientService: ClientsService, 
     private scrollDispatcher: ScrollDispatcher, 
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private loader: LoaderService,
   ) {}
 
   ngOnInit() {
@@ -69,6 +74,7 @@ export class ClientsComponent implements OnInit, AppComponentInterface, AfterVie
   }
 
   private _getClientsByTerm(term:string) {
+    this.loader.attachLoader(this.clientTabs._elementRef);
     this.clientService.getClientsByTerm(term).subscribe((res)=>{
       this.clients = res; 
       this._normalizePhoneNumbers(this.clients);
