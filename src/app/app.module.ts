@@ -20,6 +20,7 @@ import { MenuComponent } from './menu/menu.component';
 import { MainComponent } from './main/main.component';
 import { BooksComponent } from './books/books.component';
 import { ClientsComponent } from './clients/clients.component';
+import { ClientDetailComponent } from './clients/client-detail/client-detail.component';
 import { SearchComponent } from './header/search/search.component';
 
 @NgModule({
@@ -48,9 +49,10 @@ import { SearchComponent } from './header/search/search.component';
     MainComponent,
     BooksComponent,
     ClientsComponent,
+    ClientDetailComponent,
     SearchComponent
   ],
-  entryComponents: [LoginFormComponent,LoaderComponent],
+  entryComponents: [LoginFormComponent,LoaderComponent,ClientDetailComponent],
   bootstrap: [AppComponent],
   providers:[AuthService, LoginFormComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]

@@ -1,0 +1,39 @@
+@import "./src/themes/alianza.scss";
+
+.client-detail {
+    /deep/.mat-dialog-title {
+        background-color: $primary;
+        color: white;
+        padding: 20px;
+        button {
+            margin-right: 10px;
+        }
+    }
+    
+    /deep/.mat-dialog-content {
+       .mat-tab-group {
+        .mat-tab-header {
+            .mat-tab-label {
+                color: $accent;
+            }
+        }
+       } 
+    }
+    
+    /deep/.mat-list {
+        padding-left: 30px;
+        .mat-list-item {
+            .mat-list-item-content{
+                h4 {
+                    font-weight: 600;
+                }
+            }
+        }
+        
+    }
+    
+    .mat-dialog-container {
+        padding: 0px !important;
+        overflow: hidden;
+    }
+}

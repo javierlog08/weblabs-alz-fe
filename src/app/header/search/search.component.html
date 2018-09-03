@@ -1,4 +1,4 @@
 <mat-card *ngIf="showSearch" [class.mat-elevation-z4]=true>
     <mat-icon>search</mat-icon>
-    <input placeholder="{{placeHolder}}" matInput (keyup)="onKeyUp($event)"/>
+    <input placeholder="{{placeHolder}}" matInput (keyup)="onKeyUp($event)" md-autofocus/>
 </mat-card>

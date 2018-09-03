@@ -1,5 +1,5 @@
 
-<mat-tab-group [cdkOverlayOrigin]>
+<mat-tab-group>
   <mat-tab>
     <ng-template mat-tab-label>
       Todos
@@ -7,7 +7,7 @@
     
     <mat-list>
       <div *ngFor="let client of clients">
-          <mat-list-item>
+          <mat-list-item (click)="openClientDetail(client)">
               <button mat-mini-fab *ngIf="client.persona.trim() !=='Jurídica'">
                   <mat-icon mat-list-icon >face</mat-icon>
               </button>
@@ -34,7 +34,7 @@
       <mat-list>
           <div *ngFor="let client of clients">
             <div *ngIf="client.persona.trim() !=='Jurídica'">
-                <mat-list-item >
+                <mat-list-item (click)="openClientDetail(client)" >
                     <button mat-mini-fab >
                         <mat-icon mat-list-icon >face</mat-icon>
                     </button>
@@ -59,7 +59,7 @@
     <mat-list>
         <div *ngFor="let client of clients">
           <div *ngIf="client.persona.trim() ==='Jurídica'">
-              <mat-list-item  >
+              <mat-list-item (click)="openClientDetail(client)"  >
                   <button mat-mini-fab color="primary" >
                       <mat-icon mat-list-icon >business</mat-icon>
                   </button>

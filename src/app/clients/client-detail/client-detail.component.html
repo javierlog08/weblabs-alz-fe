@@ -1,0 +1,58 @@
+<h1 mat-dialog-title>
+    <button mat-mini-fab *ngIf="client.persona.trim() ==='Jurídica'">
+        <mat-icon mat-list-icon >business</mat-icon>
+    </button>
+    <button mat-mini-fab *ngIf="client.persona.trim() !=='Jurídica'">
+        <mat-icon mat-list-icon >face</mat-icon>
+    </button>
+    {{client.nombreCompleto}}
+  </h1>
+  
+  <mat-dialog-content>
+  
+      <mat-tab-group>
+          <mat-tab>
+            <ng-template mat-tab-label>
+                Generales
+            </ng-template>
+            <mat-list>
+              <mat-list-item>
+                  <h4 mat-line>CIP / RUC:</h4>
+                  <p mat-line>{{client.cip_ruc}}</p>
+              </mat-list-item>
+              <mat-list-item>
+                  <h4 mat-line>Genero:</h4>
+                  <p mat-line>{{client.sexo}}</p>
+              </mat-list-item>
+              <mat-list-item>
+                  <h4 mat-line>Estado Civl:</h4>
+                  <p mat-line>{{client.estado_civil}}</p>
+              </mat-list-item>
+              <mat-list-item>
+                  <h4 mat-line>Profesión:</h4>
+                  <p mat-line>{{client.profesion}}</p>
+              </mat-list-item>
+            </mat-list>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              Direcciones
+            </ng-template>
+            <mat-list>
+              <mat-list-item *ngFor="let address of client.addresses">
+                <h4 mat-line>{{address.title}}:</h4>
+                <p mat-line>{{address.body}}</p>
+              </mat-list-item>
+            </mat-list>
+          </mat-tab>
+
+          <mat-tab>
+              <ng-template mat-tab-label>
+                Productos
+              </ng-template>
+              <p>...</p>
+            </mat-tab>
+        </mat-tab-group>
+  
+  </mat-dialog-content>

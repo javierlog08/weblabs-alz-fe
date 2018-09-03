@@ -9,13 +9,9 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 })
 export class LoaderComponent implements OnInit {
 
-  constructor(
-    /*public dialogRef: MatDialogRef<LoaderComponent>,
-    @Inject(MAT_DIALOG_DATA) public data*/
-  ) {}
+  constructor() {}
 
   onNoClick(): void {
-    //this.dialogRef.close();
   }
 
   ngOnInit() {

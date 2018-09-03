@@ -4,7 +4,9 @@ import { ClientsService } from './clients.service';
 import { ScrollDispatcher, CdkScrollable } from '@angular/cdk/scrolling';
 import { _ } from 'underscore';
 import { LoaderService } from '../shared/loader/loader.service';
-import { MatTabGroup } from '../../../node_modules/@angular/material';
+import { MatTabGroup, MatDialog } from '../../../node_modules/@angular/material';
+import { Subscriber, Observable, Subscription } from '../../../node_modules/rxjs';
+import { ClientDetailComponent } from './client-detail/client-detail.component';
 
 var self = null;
 
@@ -17,7 +19,7 @@ export class ClientsComponent implements OnInit, AppComponentInterface, AfterVie
   
   title: string = "Clientes";
   hasSearch: boolean= true;
-  searchPlaceHolder:string = "Introduce un nombre o numero de Indentidad...";
+  searchPlaceHolder:string = "Introduce un nombre o numero de Indentidad y presiona <ENTER>...";
 
   clients = new Array();
 
@@ -25,6 +27,8 @@ export class ClientsComponent implements OnInit, AppComponentInterface, AfterVie
   lastScrollTop: number = 0;
   ITEMS_PER_PAGE: number = 15;
   searchTerm: string = "";
+
+  runningService : Subscription;
 
   @ViewChild(MatTabGroup) clientTabs:MatTabGroup;
   
@@ -34,11 +38,12 @@ export class ClientsComponent implements OnInit, AppComponentInterface, AfterVie
     private scrollDispatcher: ScrollDispatcher, 
     private ref: ChangeDetectorRef,
     private loader: LoaderService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
     self = this;
-    this._getClients(this.last_page, this.ITEMS_PER_PAGE);
+    this._getClients(this.last_page, this.ITEMS_PER_PAGE, true);  
   }
 
   ngAfterViewInit() {
@@ -52,14 +57,25 @@ export class ClientsComponent implements OnInit, AppComponentInterface, AfterVie
     });
   }
 
-  searchHandler(event) {
+  searchHandler(event:any) {
     self.searchTerm = event.target.value;
-    if(event.target.value.length > 0) {
-      self._getClientsByTerm(event.target.value);
-    } else {
-      this._getClients(0, this.ITEMS_PER_PAGE);
+    console.log(event.keyCode);
+    if(event.keyCode === 13) {
+      if(event.target.value.length > 0) {
+        self._getClientsByTerm(event.target.value);
+      } else {
+        this._getClients(0, this.ITEMS_PER_PAGE);
+      }
     }
-    
+  }
+
+  openClientDetail(client) {
+    const dialogRef = this.dialog.open(ClientDetailComponent,{
+      width: '960px',
+      position:{ top:'10px'},
+      data: client,
+      panelClass: 'client-detail'
+    });
   }
 
   private _addListScrollHandler(e: HTMLElement) {
@@ -74,20 +90,34 @@ export class ClientsComponent implements OnInit, AppComponentInterface, AfterVie
   }
 
   private _getClientsByTerm(term:string) {
+
+    if(this.runningService) {
+      this.runningService.unsubscribe();      
+    }
+
     this.loader.attachLoader(this.clientTabs._elementRef);
-    this.clientService.getClientsByTerm(term).subscribe((res)=>{
+
+    this.runningService = this.clientService.getClientsByTerm(term).subscribe((res)=>{
       this.clients = res; 
       this._normalizePhoneNumbers(this.clients);
       this.ref.detectChanges();
+      this.loader.detachLoader();
     });
   }
 
-  private _getClients(start, offset) {
+  private _getClients(start, offset, useLoader = false) {
+
+    if(useLoader)
+      this.loader.openBodyLoader();
+
     this.clientService.getClients(start, offset).subscribe((res)=> {
       this.clients = _.uniq(this.clients.concat(res)); // remove duplicates in case infinite scroll
       this._normalizePhoneNumbers(this.clients);
       if(this.ref)
         this.ref.detectChanges();
+
+      if(useLoader)
+        this.loader.closeLoader();
     });
   }
 
